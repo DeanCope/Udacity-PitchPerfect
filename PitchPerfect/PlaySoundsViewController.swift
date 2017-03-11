@@ -31,6 +31,16 @@ class PlaySoundsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Prevent the images from being "squashed" in landscape on small screens
+        snailButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        chipmunkButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        rabbitButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        vaderButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        echoButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        reverbButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        stopButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+
         setupAudio()
 
     }

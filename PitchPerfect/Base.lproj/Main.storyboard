@@ -26,23 +26,30 @@
                                 <rect key="frame" x="16" y="64" width="343" height="603"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1j-Xc-tMN">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="283"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="252.5"/>
                                         <state key="normal" image="Record"/>
                                         <connections>
                                             <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dcW-r7-vT9"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yT-Y4-34H">
-                                        <rect key="frame" x="0.0" y="283" width="343" height="37"/>
+                                        <rect key="frame" x="0.0" y="252.5" width="343" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJr-dw-LbW">
-                                        <rect key="frame" x="0.0" y="320" width="343" height="283"/>
+                                        <rect key="frame" x="0.0" y="285.5" width="343" height="252.5"/>
                                         <state key="normal" image="Stop"/>
                                         <connections>
                                             <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2A-GJ-wgz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEe-cl-fbz" userLabel="Pause Button">
+                                        <rect key="frame" x="0.0" y="538" width="343" height="65"/>
+                                        <state key="normal" image="Pause"/>
+                                        <connections>
+                                            <action selector="pauseOrResume:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ir-Fd-st8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -58,6 +65,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="16T-9Y-3Y6"/>
                     <connections>
+                        <outlet property="pauseResumeButton" destination="OEe-cl-fbz" id="1ov-rx-jHa"/>
                         <outlet property="recordButton" destination="X1j-Xc-tMN" id="Z6P-b6-UxG"/>
                         <outlet property="recordingLabel" destination="4yT-Y4-34H" id="jRs-KA-UVR"/>
                         <outlet property="stopRecordingButton" destination="VJr-dw-LbW" id="lpA-1v-moC"/>
@@ -166,6 +174,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FXx-me-fM6" firstAttribute="top" secondItem="GU7-As-WJj" secondAttribute="bottom" id="2GW-Nq-Jmt"/>
                             <constraint firstItem="FXx-me-fM6" firstAttribute="leading" secondItem="eLU-6p-3H6" secondAttribute="leading" id="Rgs-A1-f2C"/>
@@ -211,6 +220,7 @@
         <image name="Fast" width="90" height="90"/>
         <image name="HighPitch" width="90" height="90"/>
         <image name="LowPitch" width="90" height="90"/>
+        <image name="Pause" width="31" height="40"/>
         <image name="Record" width="155" height="155"/>
         <image name="Reverb" width="90" height="90"/>
         <image name="Slow" width="90" height="90"/>
