@@ -23,30 +23,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="HeH-S0-Vf1">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <rect key="frame" x="16" y="64" width="343" height="595"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1j-Xc-tMN">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="252.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="249"/>
                                         <state key="normal" image="Record"/>
                                         <connections>
                                             <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dcW-r7-vT9"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yT-Y4-34H">
-                                        <rect key="frame" x="0.0" y="252.5" width="343" height="33"/>
+                                        <rect key="frame" x="0.0" y="249" width="343" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="4Ld-cZ-QgM"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJr-dw-LbW">
-                                        <rect key="frame" x="0.0" y="285.5" width="343" height="252.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJr-dw-LbW">
+                                        <rect key="frame" x="0.0" y="269" width="343" height="249"/>
                                         <state key="normal" image="Stop"/>
                                         <connections>
                                             <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2A-GJ-wgz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEe-cl-fbz" userLabel="Pause Button">
-                                        <rect key="frame" x="0.0" y="538" width="343" height="65"/>
+                                        <rect key="frame" x="0.0" y="518" width="343" height="77"/>
                                         <state key="normal" image="Pause"/>
                                         <connections>
                                             <action selector="pauseOrResume:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ir-Fd-st8"/>
@@ -59,7 +62,7 @@
                         <constraints>
                             <constraint firstItem="HeH-S0-Vf1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5R3-8w-7qD"/>
                             <constraint firstItem="HeH-S0-Vf1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="VJi-Ud-I5n"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HeH-S0-Vf1" secondAttribute="bottom" id="hZ0-Sk-LOT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HeH-S0-Vf1" secondAttribute="bottom" constant="8" symbolic="YES" id="hZ0-Sk-LOT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HeH-S0-Vf1" secondAttribute="trailing" id="yar-jP-kAa"/>
                         </constraints>
                     </view>

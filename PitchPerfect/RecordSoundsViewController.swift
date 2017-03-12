@@ -24,8 +24,24 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     var recordingState = RecordingState.stopped {
         didSet{
             // whenever the state is changed, update the UI (label and enable/disable buttons)
-            configureUI()
+            recordingLabel.text = recordingState.rawValue
+            
+            switch(recordingState) {
+            case .stopped:
+                setUIState(isRecording: false, pauseColor: UIColor.white)
+            case .recording:
+                setUIState(isRecording: true, pauseColor: UIColor.white)
+            case .paused:
+                setUIState(isRecording: true, pauseColor: UIColor.red)
+            }
         }
+    }
+    
+    func setUIState(isRecording: Bool, pauseColor: UIColor) {
+        recordButton.isEnabled = !isRecording
+        stopRecordingButton.isEnabled = isRecording
+        pauseResumeButton.isEnabled = isRecording
+        pauseResumeButton.imageView?.backgroundColor = pauseColor
     }
     
     // MARK: - Outlets
@@ -70,6 +86,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBAction func stopRecording(_ sender: Any) {
         recordingState = .stopped
+        
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
@@ -92,42 +109,25 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    func configureUI(){
-        // Configure the UI to match the recording state
-        
-        recordingLabel.text = recordingState.rawValue
-        
-        switch(recordingState) {
-        case .stopped:
-            recordButton.isEnabled = true
-            stopRecordingButton.isEnabled = false
-            pauseResumeButton.isEnabled = false
-            pauseResumeButton.backgroundColor = .white
-        case .recording:
-            recordButton.isEnabled = false
-            stopRecordingButton.isEnabled = true
-            pauseResumeButton.isEnabled = true
-            pauseResumeButton.backgroundColor = .white
-        case .paused:
-            recordButton.isEnabled = false
-            stopRecordingButton.isEnabled = true
-            pauseResumeButton.isEnabled = true
-            pauseResumeButton.backgroundColor = .red
-        }
-    }
-    
     // MARK: - AVAudioRecorderDelegate Methods
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
             performSegue(withIdentifier: Storyboard.stopRecordingSegueId, sender: audioRecorder.url)
         } else {
-            print("Recordering error occurred.")
+            //print("Recording error occurred.")
+            showAlert("Audio File Error", message: "Error creating audio file")
         }
     }
     
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
-        let alert = UIAlertController(title: "Recording Error", message: error?.localizedDescription, preferredStyle: .alert)
+        if let message = error?.localizedDescription {
+            showAlert("Recording Error", message: message)
+        }
+    }
+    
+    func showAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
